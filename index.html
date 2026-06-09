@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Folha Tributária | Edição N.º 92 – Abril 2026</title>
 
-  <!-- Google Fonts: Sora (headings) + Source Serif 4 (body) -->
+  <!-- Google Fonts: Plus Jakarta Sans (headings) + Inter (body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 
   <style>
     /* =============================================
@@ -32,9 +32,9 @@
       --radius-lg:   20px;
       --shadow-sm:   0 2px 8px rgba(10,31,68,.08);
       --shadow-md:   0 6px 24px rgba(10,31,68,.12);
-      --font-head:   'Sora', sans-serif;
-      --font-body:   'Source Serif 4', serif;
-      --max-w:       900px;
+      --font-head:   'Plus Jakarta Sans', -apple-system, sans-serif;
+      --font-body:   'Inter', -apple-system, sans-serif;
+      --max-w:       1140px;
     }
 
     /* =============================================
@@ -46,7 +46,9 @@
       background: var(--bg);
       color: var(--text-primary);
       font-family: var(--font-body);
-      line-height: 1.65;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
       min-height: 100vh;
     }
     img { display: block; max-width: 100%; }
@@ -254,17 +256,21 @@
       background: var(--border);
     }
 
-    /* Grid de 5 cards — 2 colunas em mobile, 3 em tablet, 5 em desktop */
+    /* Grid de cards — flex com centralização automática de caixas órfãs */
     .destaques-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
       gap: 16px;
     }
+    .destaques-grid .destaque-card {
+      flex: 0 0 calc(50% - 8px);
+    }
     @media (min-width: 540px) {
-      .destaques-grid { grid-template-columns: repeat(3, 1fr); }
+      .destaques-grid .destaque-card { flex: 0 0 calc(33.333% - 11px); }
     }
     @media (min-width: 750px) {
-      .destaques-grid { grid-template-columns: repeat(4, 1fr); }
+      .destaques-grid .destaque-card { flex: 0 0 calc(25% - 12px); }
     }
     .destaque-card {
       background: var(--surface-2);
@@ -439,15 +445,19 @@
        ============================================= */
     .triple-row {
       padding: 0 28px 40px;
-      display: grid;
-      grid-template-columns: 1fr;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
       gap: 16px;
     }
+    .triple-row .article-card {
+      flex: 0 0 100%;
+    }
     @media (min-width: 480px) {
-      .triple-row { grid-template-columns: repeat(2, 1fr); }
+      .triple-row .article-card { flex: 0 0 calc(50% - 8px); }
     }
     @media (min-width: 720px) {
-      .triple-row { grid-template-columns: repeat(4, 1fr); }
+      .triple-row .article-card { flex: 0 0 calc(25% - 12px); }
     }
     .article-card {
       border: 1px solid var(--border);
@@ -459,7 +469,21 @@
       transition: box-shadow .2s;
     }
     .article-card:hover { box-shadow: var(--shadow-md); }
-    .article-card .badge { align-self: flex-start; }
+    .article-card .badge {
+      display: block;
+      width: 100%;
+      text-align: center;
+      background: var(--blue-mid);
+      color: #fff;
+      padding: 6px 14px;
+    }
+    .article-card .btn-secondary {
+      width: 100%;
+      justify-content: center;
+      align-self: stretch;
+      border-color: var(--blue-light);
+      color: var(--blue-light);
+    }
     .article-card h3 {
       font-family: var(--font-head);
       font-size: .95rem;
@@ -824,15 +848,15 @@
           </ul>
         </div>
       </div>
-      <a class="btn-secondary mt-auto" href="asy5-bastonario.html" style="align-self:flex-start;">Explorar &rarr;</a>
+      <a class="btn-secondary mt-auto" href="asy5-bastonario.html">Ler mais &rarr;</a>
     </article>
 
     <!-- Artigo 2: Opinião -->
     <article class="article-card">
-      <span class="badge" style="background:#f0f4ff; color:#1246a0;">Opinião</span>
+      <span class="badge">Opinião</span>
       <h3>Modernização Tributária e Economia Informal</h3>
       <p>A formalização é instrumento essencial para fortalecer a cidadania fiscal, aumentar receitas públicas e promover desenvolvimento económico sustentável.</p>
-      <a class="btn-secondary mt-auto" href="informalidade-angola.html" style="align-self:flex-start;">Continuar leitura &rarr;</a>
+      <a class="btn-secondary mt-auto" href="informalidade-angola.html">Ler mais &rarr;</a>
     </article>
 
     <!-- Artigo 3: Angola-RDC -->
@@ -848,15 +872,15 @@
         <div class="flag-ao"></div>
         <div class="flag-rdc"></div>
       </div>
-      <a class="btn-secondary mt-auto" href="forum-rdc-angola.html" style="align-self:flex-start;">Ler mais &rarr;</a>
+      <a class="btn-secondary mt-auto" href="forum-rdc-angola.html">Ler mais &rarr;</a>
     </article>
 
     <!-- Artigo 4: Voz do Contribuinte -->
     <article class="article-card">
-      <span class="badge" style="background:#ecfeff; color:#0891b2;">A Voz do Contribuinte</span>
+      <span class="badge">A Voz do Contribuinte</span>
       <h3>Submissão Electrónica do Dossier de Preços de Transferência</h3>
       <p>Contribuintes destacam melhorias operacionais, maior simplicidade e clareza nas sessões de esclarecimento promovidas pela AGT sobre o SIGT.</p>
-      <a class="btn-secondary mt-auto" href="voz-contribuinte.html" style="align-self:flex-start; border-color:#0891b2; color:#0891b2;">Ler testemunhos &rarr;</a>
+      <a class="btn-secondary mt-auto" href="voz-contribuinte.html">Ler mais &rarr;</a>
     </article>
 
   </div>
